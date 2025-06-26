@@ -2,7 +2,7 @@ import { WebSocket } from "ws";
 import { ServerMessage } from "./types";
 
 
-const rooms = new Map<string, Set<WebSocket>>()
+const rooms = new Map<string, Set<WebSocket>>();
 
 export function addToRoom(roomId: string, socket: WebSocket){
     if(!rooms.has(roomId)){
