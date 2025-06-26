@@ -1,7 +1,9 @@
 export type ClientMessage = 
-    {type: "join", roomId: string} 
+    {type: "SUBSCRIBE", roomId: string} 
     | 
-    {type: "chat", message: string, roomId: string};
+    {type: "chat", message: string, roomId: string}
+    |
+    {type: "UNSUBSCRIBE", roomId: string};
 
 export type ServerMessage = 
     {type: "message", message: string}
