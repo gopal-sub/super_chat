@@ -1,15 +1,18 @@
 import { WebSocket } from "ws";
 import {ClientMessage, ServerMessage} from './types';
-import {addToRoom, broadcastMessage} from './manager'
+import {subscribeToRoom, broadcastMessage} from './manager';
+
+//roomID -> [socket1, userID],
+// => send message to all members of the room
 
 export function handleSocket(socketObject: WebSocket){
     // let currentRoom: string | null = null;
+    //check if the user is authenticated then add the user to the room.
 
     socketObject.on("message", (data)=>{
         try{
-            console.log(data.toString())
             const message: ClientMessage = JSON.parse(data.toString());
-            if(message.type === "join"){
+            if(message.type === "SUBSCRIBE"){
                 const room = message.roomId;
                 addToRoom(room, socketObject);
                 const sendMsg = `type: "message", message: Joined room ${room}`;
@@ -31,3 +34,4 @@ export function handleSocket(socketObject: WebSocket){
         
     })
 }
+
