@@ -1,0 +1,6 @@
+{
+    roomID,
+    members: [],
+    admins: [],
+    blocked: [],
+}

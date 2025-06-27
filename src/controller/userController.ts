@@ -1,5 +1,5 @@
 import express from 'express';
-import {insertUserDB} from '../services/userS'
+import {insertUserDB} from '../services/userServices'
 
 export function createUser(req: express.Request, res: express.Response){
     const username = req.body.username;
