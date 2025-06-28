@@ -15,4 +15,4 @@ const roomSchema = new Schema<roomInterface>({
     blocked: [{type: Schema.Types.ObjectId,  ref: 'userSchema'}],
 });
 
-export const UserModel = mongoose.model<roomInterface>('roomSchema', roomSchema);
+export const RoomModel = mongoose.model<roomInterface>('roomSchema', roomSchema);

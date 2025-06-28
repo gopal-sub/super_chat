@@ -1,6 +1,11 @@
 import {Router} from 'express';
+import { createUser, createSession } from '../controller/userController';
+import { verifySession } from '../middleware/authMiddleware';
 
-const userRoutes = Router()
+export const userRouter = Router()
 
-userRoutes.get('/signup', createUser);
-userRoutes.get('/login', createSession);
+userRouter.post('/signup', createUser);
+userRouter.post('/login', createSession);
+userRouter.post('/data',verifySession, (req, res)=>{
+    res.send("hi there");
+});
