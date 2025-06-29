@@ -49,6 +49,27 @@ export async function createUser(req: express.Request, res: express.Response){
 
 }
 
-export function createSession(req: express.Request, res: express.Response){
-
+export async function createSession(req: express.Request, res: express.Response){
+    const email = req.body.email;
+    const password = req.body.password;
+    try{
+        const user  = await findUserByEmail(email);
+        if(!user){
+            res.status(404).json({
+                msg: "There is no user assciated with this email"
+            });
+            return;
+        }
+        if(user.password != password){
+            res.status(200).json({
+                msg: "incorrect password"
+            });
+            return;
+        }
+        // create_session
+    }catch(e){
+        res.status(500).json({
+            msg: "Internal server error"
+        })
+    }
 }

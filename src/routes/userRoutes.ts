@@ -6,6 +6,3 @@ export const userRouter = Router()
 
 userRouter.post('/signup', createUser);
 userRouter.post('/login', createSession);
-userRouter.post('/data',verifySession, (req, res)=>{
-    res.send("hi there");
-});
