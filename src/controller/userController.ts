@@ -1,13 +1,12 @@
 import express from 'express';
 import {insertUserDB, findUserByEmail, findUserByUsername} from '../services/userServices';
 import { userInterface } from '../schema/userSchema';
+import {encryptPassword} from '../services/authService'
 
 export async function createUser(req: express.Request, res: express.Response){
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
-    console.log(email);
-    console.log(username);
     
 
     //find if user email already exists
@@ -33,7 +32,7 @@ export async function createUser(req: express.Request, res: express.Response){
     const newUser: Partial<userInterface> = {
         username: username,
         email: email,
-        password: password
+        password: await encryptPassword(password),
     };
     try{
         const db_response = await insertUserDB(newUser);
@@ -67,6 +66,7 @@ export async function createSession(req: express.Request, res: express.Response)
             return;
         }
         // create_session
+        
     }catch(e){
         res.status(500).json({
             msg: "Internal server error"
