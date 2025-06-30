@@ -1,4 +1,3 @@
-
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -13,7 +12,7 @@ import {userRouter} from './routes/userRoutes'
 
 const mongoURL = process.env.DATABASE_URL;
 if(!mongoURL){
-    throw new Error("Mondodb URL missing")
+    throw new Error("Mondodb URL missing");
 }
 
 
@@ -35,7 +34,7 @@ app.use('/api/v1/user',userRouter);
 
 app.listen(process.env.PORT, async()=>{
     await mongoose.connect(mongoURL);
-    console.log("database running");
+    console.log("database connected");
     console.log("server running")
 })
 

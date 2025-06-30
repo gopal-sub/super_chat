@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 
+
 export function encryptPassword(password: string){
     const hashed_password = bcrypt.hash(password, 10);
     return hashed_password;
@@ -13,6 +14,8 @@ export async function verifyPassword(hashedPassword: string, userPassword: strin
         return false;
     }
 }
+
+
 
 
 

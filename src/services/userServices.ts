@@ -5,7 +5,6 @@ export async function insertUserDB(newUser: Partial<userInterface>){
         const db_response = await UserModel.create(newUser);
         return db_response;
     }catch(e){
-        console.log(e);
         return null;
     }
     
