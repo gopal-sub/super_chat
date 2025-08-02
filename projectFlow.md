@@ -4,3 +4,9 @@
 4. have a feature of admin in a room and have remove feature -> default first person in room -> admin and multi admin feature
 5. all leave the room remove the room.
 6. have a blocking feature.
+
+-> review all code
+-> auth user and message queue
+-> protect branch main
+-> docker file and compose
+
