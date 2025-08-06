@@ -14,12 +14,16 @@ const mongoURL = process.env.DATABASE_URL;
 if(!mongoURL){
     throw new Error("Mondodb URL missing");
 }
+const session_secret = process.env.SESSION_SECRET;
+if(!session_secret){
+    throw new Error("session secret missing");
+}
 
 
 const app = express();
 
 app.use(session({
-    secret: "dbakjbd",
+    secret: session_secret,
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false },
