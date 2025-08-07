@@ -68,8 +68,8 @@ export async function createSession(req: express.Request, res: express.Response)
             return;
         }
         // create_session
-        //@ts-ignore
-        req.session.userID = user._id;
+        
+        req.session.userID = user._id as string;
         res.status(200).json({
             msg:"You are logged in"
         });
@@ -83,4 +83,14 @@ export async function createSession(req: express.Request, res: express.Response)
             msg: "Internal server error"
         })
     }
+}
+export async function viewChats(req: express.Request, res: express.Response) {
+    console.log(req.session);
+    res.json({
+        msg: "hi"
+    })
+}
+
+export async function retriveSession(req: express.Request, res: express.Response) {
+    
 }
